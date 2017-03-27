@@ -1,53 +1,83 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html>
-<head>
-<title>www.rotw.de.ki | Template</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" href="style.css" type="text/css" />
-<!--[if IE ]><style type="text/css">
-.title {
-padding-top:112px;
-}
-</style>
-<![endif]-->
-</head>
-<body>
-<div id="all">
-<div id="header">
+	pageEncoding="UTF-8"%>
+<%@ include file = "include/header.jsp"%>
+<div class="date_box">
+	<div class="date_box_month">Jan</div>
+	<div class="date_box_day">18</div>
+</div>
+<h3>Lorem Ipsum sample text</h3>
 
-<span style="float:right;margin-right:5px;display:inline;"><a href="#">Home</a> 
-<a href="#">About</a> 
-<a href="#">Projects</a> 
-<a href="#">Guestbook</a> 
-<a href="#">Imprint</a></span>
 
-<div class="title">Pagename</div>
+<p>
+	<img src="images/demo_img.jpg" alt="Kiwi" width="159" height="140"
+		class="float_right" />This template is created by Dieter Schneider a
+	cold January night 2007. It's valid Xhtml 1.0 Strict! If you want the
+	PSD file for this template you can purchase it at <a
+		href="http://www.csstemplateheaven.com">CssTemplateHeaven.com</a>,
+	this will give you more flexibility. I kindly ask you to not remove the
+	copyright in the footer if you have the free version of this template.
+</p>
+
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+	Curabitur nibh. Vestibulum ante ipsum primis in faucibus orci luctus et
+	ultrices posuere cubilia Curae; Vestibulum sapien enim, cursus in,
+	aliquam sit amet, convallis eget, metus. Duis dui mi, varius at,
+	lacinia eget, ullamcorper et, tortor. Pellentesque ac pede. Lorem ipsum
+	dolor sit amet, consectetuer adipiscing elit. Aenean orci mi, varius
+	eget, mollis vel, rhoncus a, leo. Ut eros enim, vehicula quis, gravida
+	ac, sodales sit amet, orci. Nulla eleifend tristique erat.</p>
+
+<p class="read_more">
+	<a href="#"><img src="images/arrow.png" alt="read more" width="16"
+		height="12" />Further reading</a>
+</p>
+
+
+<div class="date_box">
+	<div class="date_box_month">Jan</div>
+	<div class="date_box_day">12</div>
 </div>
 
-<div id="content">
-<h1>Content</h1>
-<p>
-<a href="#">Lorem ipsum</a> dolor sit amet, consectetuer adipiscing elit. Morbi justo. Cras nunc est, vehicula nec, tristique sed, congue nec, lorem. Suspendisse quam purus, blandit id, dapibus non, consequat vel, lectus. <a href="#">Quisque</a> pulvinar nunc. Maecenas enim massa, laoreet id, semper a, facilisis eget, tortor. Sed quis ante. Morbi venenatis malesuada nisi. Duis sodales nibh et libero. Maecenas fermentum blandit tellus. Suspendisse potenti. Nulla iaculis, nulla ut auctor porttitor, est mi egestas elit, non sodales nulla justo scelerisque neque. Nam sollicitudin ullamcorper leo. Phasellus mattis. Nam eu lectus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
 
-</p>
-<p>
-Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Nulla pulvinar ante nec orci. Duis condimentum viverra turpis. Mauris rhoncus felis ut felis. Nulla sed orci eget enim varius facilisis. Quisque ut purus id nisi tincidunt tincidunt. Vivamus sed sapien. Donec nec dolor eget metus laoreet euismod. Aenean et nisl. Duis hendrerit. Curabitur porttitor.
-</p>
-<p>
-Sed feugiat, urna et bibendum bibendum, leo purus dignissim odio, et sodales sem quam et arcu. Cras suscipit vehicula est. Aliquam velit velit, egestas et, hendrerit eget, egestas vitae, pede. Suspendisse id augue. Nam imperdiet. Phasellus a pede ac ante accumsan euismod. Donec justo libero, vehicula sit amet, gravida et, gravida in, odio. Aenean tempor, lectus at pharetra pretium, odio risus consectetuer felis, a semper orci diam sit amet metus. Quisque metus erat, blandit nec, rhoncus eget, semper eu, nisl. Sed eget dui sed arcu tristique varius.
-</p>
-<p>
-Sed mattis, ipsum sit amet eleifend commodo, nisi velit suscipit ante, sed ultrices purus orci nec diam. Phasellus molestie. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor imperdiet erat. Nulla facilisi. Curabitur a magna eget lorem tempus lacinia. Donec semper. Phasellus fermentum quam a nibh dignissim pretium. Nunc vitae eros eget tortor pharetra tempor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos.
+<h3>A blockquote</h3>
 
+<blockquote>
+	<p class="quote">Lorem ipsum dolor sit amet, consectetuer
+		adipiscing elit. Curabitur nibh. Vestibulum ante ipsum primis in
+		faucibus orci luctus et ultrices posuere cubilia Curae; Vestibulum
+		sapien enim, cursus in, aliquam sit amet, convallis eget, metus. Duis
+		dui mi, varius at, lacinia eget, ullamcorper et, tortor. Pellentesque
+		ac pede. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+		Aenean orci mi, varius eget, mollis vel, rhoncus a, leo. Ut eros enim,
+		vehicula quis, gravida ac, sodales sit amet, orci. Nulla eleifend
+		tristique erat. Sed ac est. Fusce tincidunt luctus tortor. Quisque sed
+		neque vitae elit cursus faucibus.</p>
+</blockquote>
+
+<p>Duis mauris justo, tincidunt in, molestie sed, lacinia vel,
+	dolor. Aenean ac tellus porttitor ligula hendrerit ornare. Vivamus
+	gravida ornare augue. Proin porta, quam a vulputate blandit, massa
+	lorem euismod eros, vel nonummy enim sapien eget nisi. Cum sociis
+	natoque penatibus et magnis dis parturient montes, nascetur ridiculus
+	mus. In dapibus commodo dolor. Aliquam facilisis turpis ac tortor.
+	Quisque quis velit eget lacus consectetuer volutpat. Cras nibh. Sed
+	quis justo. In neque lacus, sagittis id, lobortis nec, congue id, diam.
+	Phasellus ut pede. Praesent porta consectetuer dui. Praesent mattis
+	neque. Nunc commodo facilisis ipsum. Etiam scelerisque. Cum sociis
+	natoque penatibus et magnis dis parturient montes, nascetur ridiculus
+	mus. Donec ut quam. Nullam mauris nulla, dictum vulputate, pharetra
+	vel, tempor nec, sem. Pellentesque scelerisque.</p>
+
+<p class="read_more">
+	<a href="#"><img src="images/arrow.png" alt="read more" width="16"
+		height="12" />Further reading</a>
 </p>
-<p>
-Mauris odio lorem, commodo et, rutrum eget, vulputate sed, nulla. Suspendisse commodo augue sit amet mi. Fusce et libero vel erat malesuada aliquam. Donec urna. Integer fringilla faucibus massa. Vivamus purus leo, mollis eu, egestas non, varius quis, nulla. Integer sagittis. Fusce non nibh in diam bibendum dapibus. Cras luctus diam at nisl. Etiam sit amet libero eu tortor sodales porttitor. Maecenas lorem.
-</p>
+
 </div>
+
+<%@include file = "include/footer.jsp" %>
 </div>
-<div id="footer">&copy; 2007 Pagename | Design by <a href="http://www.rotw.de.ki/" target="_blank">RotW</a></div>
+
+
 </body>
 </html>
