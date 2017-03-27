@@ -12,11 +12,11 @@ import lombok.ToString;
 @ToString
 public class Board {
 	
-	private int bno;
+	private int bn;
 	private String title;
-	private String content;
+	private String contnd;
 	private String writer;
 	private Date regdate;
-	private Date updateDate;
+	
 
 }

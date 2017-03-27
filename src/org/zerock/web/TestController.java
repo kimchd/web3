@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.zerock.anno.GetMapping;
+import org.zerock.anno.PostMapping;
 
 /**
  * Servlet implementation class TestController
@@ -35,7 +36,7 @@ public class TestController extends HttpServlet {
 		while (en.hasMoreElements()) {
 			String path = en.nextElement();
 			String value = this.getInitParameter(path);
-
+			System.out.println("path: "+path +"value: "+value);
 			try {
 				controllerMap.put(path, Class.forName(value).newInstance());
 			} catch (Exception e) {
@@ -59,23 +60,34 @@ public class TestController extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 
 		String httpMethod = request.getMethod();
 		String path = request.getServletPath();
 
+		String prefix = "/WEB-INF/views";
+
+		String next = path.replaceAll(".do", ".jsp");
+
+		String nextPath = prefix + next;
+
+		System.out.println(nextPath);
+
+		// path /board/register.do
+
+		// /WEB-INF/views/board/register.jsp
+
 		String controllerPath = path.split("/")[1];
 
-		System.out.println(controllerPath);
+		System.out.println("class path: "+controllerPath);
 
 		Object obj = controllerMap.get(controllerPath);
 
 		Class clz = obj.getClass();
-
+//System.out.println(clz);
 		Method[] methods = clz.getDeclaredMethods();
 
 		for (Method method2 : methods) {
-
+System.out.println("method ?: "+method2+"\n");
 			if (httpMethod.equals("GET")) {
 				GetMapping mapping = method2.getAnnotation(GetMapping.class);
 
@@ -85,16 +97,56 @@ public class TestController extends HttpServlet {
 					if (annoValue.equals(path.split("/")[2])) {
 
 						try {
-							method2.invoke(obj, null);
+							Object result =
+									method2.invoke(obj,request, response);
+								System.out.println(result);
+							if (result == null || result.getClass() == Void.class) {
+								System.out.println("void return");
+								request.getRequestDispatcher(nextPath).forward(request, response);
+								
+							}else if(result.getClass() == String.class){
+								System.out.println("hello?");
+								
+								response.sendRedirect((String)result);
+							}
+
 						} catch (Exception e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
-						}
-					}
-				}
+						}//end catch
+					}//end if
+				}//end if
+			}//end if
+			else if(httpMethod.equals("POST")){
+				PostMapping pMapping = method2.getAnnotation(PostMapping.class);
+				if (pMapping != null) {
+					String annoValue = pMapping.value();
+
+					if (annoValue.equals(path.split("/")[2])) {
+
+						try {
+							Object result =
+									method2.invoke(obj,request, response);
+								System.out.println(result);
+							if (result == null || result.getClass() == Void.class) {
+								System.out.println("void return");
+								request.getRequestDispatcher(nextPath).forward(request, response);
+								
+							}else if(result.getClass() == String.class){
+								System.out.println("hello?");
+								
+								response.sendRedirect((String)result);
+							}
+
+						} catch (Exception e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}//end catch
+					}//end if
+				}//end if
+			
 			}
-
-		}
-
+		}//end for
+		
 	}
 }
