@@ -83,13 +83,8 @@ System.out.println("post reg");
 		
 		
 	}
-	@PostMapping("list.do")
-	public String listPost(HttpServletRequest request, HttpServletResponse response)throws Exception{
-	
-		
-		return "/web3/board/register.do";
-	}
 	@GetMapping("context.do")
+	
 	public void contextget(HttpServletRequest request, HttpServletResponse response)throws Exception{
 		BoardDAO dao = new BoardDAO();
 		Board vo = null;
@@ -117,7 +112,6 @@ System.out.println("post reg");
 		
 		return "/web3/board/list.do?msg=delete_Success&page="+str;
 	}
-	
 	@GetMapping("update.do")
 	public void updateGet(HttpServletRequest request, HttpServletResponse response)throws Exception{
 		BoardDAO dao = new BoardDAO();
@@ -141,14 +135,13 @@ System.out.println("post reg");
 		vo.setBn(Integer.parseInt(request.getParameter("bn")));
 		vo.setTitle(request.getParameter("title"));
 		vo.setContnd(request.getParameter("contnd"));
-		
 		try {
 			dao.update(vo);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "list.do";
+		return "/web3/board/list.do";
 	}
 
 }

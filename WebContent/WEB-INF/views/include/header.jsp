@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>Delicious Fruit | Dieter Schneider 2007 | www.csstemplateheaven.com</title>
-<link rel="stylesheet" type="text/css" href="style.css" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
 </head>
 
 <body>
@@ -33,7 +33,7 @@
     <input type="text" class="fields" name="textfield2" />
     <input type="submit" class="submit_button" name="Submit" value="login" />
     </label></p>
-  </form>
+  </form> 
   </div>
   
 </div>
@@ -78,6 +78,7 @@
 <a href="http://www.csstemplateheaven.com">CssTemplateHeaven</a></div>
 
 <div id="right">
+
 
 </body>
 </html>

@@ -20,7 +20,7 @@ import org.zerock.anno.PostMapping;
  * Servlet implementation class TestController
  */
 @WebServlet(value = "*.do", initParams = { @WebInitParam(name = "board", value = "org.zerock.web.BoardController") })
-public class TestController extends HttpServlet {
+public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private Map<String, Object> controllerMap;
@@ -36,7 +36,7 @@ public class TestController extends HttpServlet {
 		while (en.hasMoreElements()) {
 			String path = en.nextElement();
 			String value = this.getInitParameter(path);
-			System.out.println("path: "+path +"value: "+value);
+			System.out.println("path: " + path + "value: " + value);
 			try {
 				controllerMap.put(path, Class.forName(value).newInstance());
 			} catch (Exception e) {
@@ -48,7 +48,7 @@ public class TestController extends HttpServlet {
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public TestController() {
+	public FrontController() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -57,6 +57,9 @@ public class TestController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	
+	
+	
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -78,75 +81,41 @@ public class TestController extends HttpServlet {
 
 		String controllerPath = path.split("/")[1];
 
-		System.out.println("class path: "+controllerPath);
+		System.out.println("class path: " + controllerPath);
 
 		Object obj = controllerMap.get(controllerPath);
 
 		Class clz = obj.getClass();
-//System.out.println(clz);
+
 		Method[] methods = clz.getDeclaredMethods();
 
 		for (Method method2 : methods) {
-System.out.println("method ?: "+method2+"\n");
+			System.out.println("method ?: " + method2 + "\n");
+			String annoValue = null;
 			if (httpMethod.equals("GET")) {
 				GetMapping mapping = method2.getAnnotation(GetMapping.class);
-
-				if (mapping != null) {
-					String annoValue = mapping.value();
-
-					if (annoValue.equals(path.split("/")[2])) {
-
-						try {
-							Object result =
-									method2.invoke(obj,request, response);
-								System.out.println(result);
-							if (result == null || result.getClass() == Void.class) {
-								System.out.println("void return");
-								request.getRequestDispatcher(nextPath).forward(request, response);
-								
-							}else if(result.getClass() == String.class){
-								System.out.println("hello?");
-								
-								response.sendRedirect((String)result);
-							}
-
-						} catch (Exception e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}//end catch
-					}//end if
-				}//end if
-			}//end if
-			else if(httpMethod.equals("POST")){
+				if (mapping == null)continue;
+				annoValue = mapping.value();
+			} else if (httpMethod.equals("POST")) {
 				PostMapping pMapping = method2.getAnnotation(PostMapping.class);
-				if (pMapping != null) {
-					String annoValue = pMapping.value();
-
-					if (annoValue.equals(path.split("/")[2])) {
-
-						try {
-							Object result =
-									method2.invoke(obj,request, response);
-								System.out.println(result);
-							if (result == null || result.getClass() == Void.class) {
-								System.out.println("void return");
-								request.getRequestDispatcher(nextPath).forward(request, response);
-								
-							}else if(result.getClass() == String.class){
-								System.out.println("hello?");
-								
-								response.sendRedirect((String)result);
-							}
-
-						} catch (Exception e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}//end catch
-					}//end if
-				}//end if
-			
+				if (pMapping == null)continue;
+				annoValue = pMapping.value();
 			}
-		}//end for
-		
-	}
+			if (annoValue.equals(path.split("/")[2])) {
+				try {
+					Object result = method2.invoke(obj, request, response);
+					System.out.println(result);
+					if (result == null || result.getClass() == Void.class) {
+						System.out.println("void return");
+						request.getRequestDispatcher(nextPath).forward(request, response);
+					} else if (result.getClass() == String.class) {
+						System.out.println("hello?");
+						response.sendRedirect((String) result);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				} // end catch
+			} // end if
+		} // end if
+	}// end if
 }
